@@ -1,0 +1,66 @@
+﻿<Page
+    x:Class="rgbapp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" d:DesignWidth="331.8" d:DesignHeight="419.6">
+    <ScrollViewer VerticalScrollBarVisibility="Visible">
+        <Grid ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+            <TextBlock x:Name="InfoTextBlock" HorizontalAlignment="Left" Margin="155,90,0,0" Text="InfoTextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Visibility="Collapsed" />
+            <TextBlock x:Name="DeviceInfoTextBlock" Margin="210,47,10,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right" Height="53"/>
+            <Button x:Name="ConnectButton" Content="Connect" Margin="0,10,10,0" VerticalAlignment="Top" Width="77" Click="{x:Bind ConnectButton_Click}" IsEnabled="False" HorizontalAlignment="Right"/>
+            <ComboBox x:Name="DeviceList" Margin="10,10,92,0" SelectionChanged="DeviceList_SelectionChanged" PlaceholderText="Choose RGB controller" HorizontalAlignment="Stretch">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ToggleSwitch x:Name="ModeSwitch" Header="Mode" Margin="110,47,0,0" VerticalAlignment="Top" OffContent="RGB" OnContent="Effect" Toggled="ModeSwitch_Toggled" IsEnabled="False" Width="95"/>
+            <ToggleSwitch x:Name="PowerSwitch" Header="Power" Margin="10,47,0,0" VerticalAlignment="Top" IsEnabled="False" Toggled="PowerSwitch_Toggled" Width="95"/>
+            <ColorPicker x:Name="PickerList" HorizontalAlignment="Stretch" Margin="10,107,10,10" VerticalAlignment="Stretch" ColorChanged ="ColorPicker_ColorChanged" IsEnabled="False" ColorSpectrumShape="Ring" HorizontalContentAlignment="Left"/>
+            <Grid x:Name="Effect" Margin="0,107,0,0" Visibility="Collapsed" VerticalAlignment="Stretch">
+                <TextBlock HorizontalAlignment="Left" Text="Brightness" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,0,0,0"/>
+                <Slider HorizontalAlignment="Stretch" Margin="10,24,10,0" VerticalAlignment="Top" ValueChanged="SliderBrihtness_ValueChanged"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,61,0,0" Text="Speed" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <Slider HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,85,10,0" ValueChanged="SliderSpeed_ValueChanged" />
+                <ComboBox Margin="10,122,10,0" PlaceholderText="Choose an effect" SelectionChanged="ComboBox_SelectionChanged" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                    <x:String>Static red</x:String>
+                    <x:String>Static green</x:String>
+                    <x:String>Static blue</x:String>
+                    <x:String>Static yellow</x:String>
+                    <x:String>Static cyan</x:String>
+                    <x:String>Static magenta</x:String>
+                    <x:String>Static white</x:String>
+                    <x:String>Jump RGB</x:String>
+                    <x:String>Jump RGBYCMW</x:String>
+                    <x:String>Gradient RGB</x:String>
+                    <x:String>Gradient RGBYCMW</x:String>
+                    <x:String>Gradient red</x:String>
+                    <x:String>Gradient green</x:String>
+                    <x:String>Gradient blue</x:String>
+                    <x:String>Gradient yellow</x:String>
+                    <x:String>Gradient cyan</x:String>
+                    <x:String>Gradient mangeta</x:String>
+                    <x:String>Gradient white</x:String>
+                    <x:String>Gradient red-green</x:String>
+                    <x:String>Gradient red-blue</x:String>
+                    <x:String>Gradient green-blue</x:String>
+                    <x:String>Blink RGBYCMW</x:String>
+                    <x:String>Blink red</x:String>
+                    <x:String>Blink green</x:String>
+                    <x:String>Blink blue</x:String>
+                    <x:String>Blink yellow</x:String>
+                    <x:String>Blink cyan</x:String>
+                    <x:String>Blink magenta</x:String>
+                    <x:String>Blink white</x:String>
+                </ComboBox>
+            </Grid>
+            <ProgressRing x:Name="LoadingRing" HorizontalAlignment="Right" Margin="0,55,28,0" VerticalAlignment="Top" Height="40" Width="40"/>
+        </Grid>
+    </ScrollViewer>
+</Page>
